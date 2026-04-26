@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Василиса ✦ Сияние комплиментов</title>
+    <title>Василиса ✦ Сияние комплиментов + Меллстрой</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none; /* лёгкий эстетический эффект, текст можно выделять, но для нежности */
+            user-select: none;
         }
 
         body {
@@ -24,7 +24,6 @@
             overflow-x: hidden;
         }
 
-        /* Атмосферные частицы (лёгкий бэкграунд) */
         .romantic-bg {
             position: fixed;
             top: 0;
@@ -53,7 +52,6 @@
             100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
 
-        /* ГЛАВНЫЙ КОНТЕЙНЕР */
         .compliment-world {
             position: relative;
             z-index: 10;
@@ -68,7 +66,6 @@
             border: 1px solid rgba(255, 200, 120, 0.3);
         }
 
-        /* КОМПЛИМЕНТ (ЗОЛОТОЙ ЗАГОЛОВОК) — по типу "Василиса, ты моё..." */
         .compliment-title {
             text-align: center;
             font-size: clamp(2rem, 8vw, 3.8rem);
@@ -90,7 +87,6 @@
             100% { background-position: 100% 50%; letter-spacing: 1px; }
         }
 
-        /* Описание / мягкий подзаголовок */
         .soft-sub {
             text-align: center;
             color: #f3d9b1;
@@ -108,7 +104,6 @@
             margin-right: auto;
         }
 
-        /* СЕТКА СЛОВ (светящиеся элементы) */
         .words-grid {
             display: flex;
             flex-wrap: wrap;
@@ -117,7 +112,6 @@
             margin: 2rem 0 1.5rem;
         }
 
-        /* Каждое слово - стилизованная кнопка / интерактивный элемент */
         .glow-word {
             display: inline-block;
             font-size: 1.8rem;
@@ -136,7 +130,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        /* ЭФФЕКТ ПРИ НАВЕДЕНИИ (сияние как золото + сочное тепло) */
         .glow-word:hover {
             background: radial-gradient(circle at 30% 20%, rgba(255, 210, 90, 0.2), rgba(255, 180, 60, 0.1));
             color: #FFF1BF;
@@ -148,7 +141,6 @@
             transition: all 0.18s cubic-bezier(0.2, 1.2, 0.4, 1);
         }
 
-        /* ЭФФЕКТ ПРИ НАЖАТИИ / АКТИВ (дополнительная вспышка) */
         .glow-word:active {
             transform: scale(0.97);
             background: rgba(255, 190, 70, 0.3);
@@ -157,47 +149,113 @@
             transition: 0.05s linear;
         }
 
-        /* Для красоты - разный размер некоторых слов (варьируем) */
-        .word-big {
-            font-size: 2.1rem;
+        .word-big { font-size: 2.1rem; }
+        .word-medium { font-size: 1.7rem; }
+        .word-lovely { font-size: 2rem; }
+
+        /* БЛОК МЕЛЛСТРОЯ (ДОБАВЛЕН, НЕ ТРОГАЕТ ОСТАЛЬНОЕ) */
+        .mellstroy-section {
+            margin-top: 2.5rem;
+            text-align: center;
+            border-top: 1px dashed rgba(255, 215, 150, 0.4);
+            padding-top: 2rem;
         }
-        .word-medium {
+
+        .mellstroy-button {
+            background: linear-gradient(135deg, #1f1b2e, #2a1f3a);
+            border: 2px solid #ffb347;
+            color: #ffdd99;
+            font-size: 1.6rem;
+            font-weight: bold;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            cursor: pointer;
+            font-family: 'Poppins', 'Segoe UI', monospace;
+            letter-spacing: 2px;
+            transition: all 0.25s ease;
+            box-shadow: 0 0 10px rgba(255, 180, 60, 0.4);
+            backdrop-filter: blur(5px);
+            width: 100%;
+            max-width: 280px;
+            margin: 0 auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .mellstroy-button:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #2a2340, #3a2a4a);
+            border-color: #ffcc77;
+            box-shadow: 0 0 22px 5px #ffaa44, 0 0 35px rgba(255, 200, 70, 0.6);
+            text-shadow: 0 0 6px #ffcc66;
+        }
+
+        .mellstroy-button:active {
+            transform: scale(0.96);
+            background: #4a2e5a;
+            box-shadow: 0 0 30px 10px #ffcc55;
+        }
+
+        .meme-messages {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            min-height: 100px;
+        }
+
+        .meme-bubble {
+            background: linear-gradient(145deg, #2e2545, #1f1935);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffddbb;
+            text-shadow: 0 0 5px #ffaa33;
+            animation: popIn 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3), 0 0 12px rgba(255, 200, 100, 0.5);
+            border-left: 3px solid #ffcc66;
+            border-right: 3px solid #ffcc66;
+            font-family: 'Poppins', monospace;
+            letter-spacing: 1px;
+            backdrop-filter: blur(2px);
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        .meme-bubble:hover {
+            transform: scale(1.02);
+            background: #3a2d55;
+            box-shadow: 0 0 18px #ffbb55;
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5) translateY(20px); }
+            80% { transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .meme-omg {
+            background: linear-gradient(135deg, #3a2c4a, #251e38);
+            border-bottom: 2px solid #ffaa55;
             font-size: 1.7rem;
-        }
-        .word-lovely {
-            font-size: 2rem;
-        }
-
-        /* Легкая анимация появления слов */
-        .glow-word {
-            animation: gentleRise 0.5s ease backwards;
+            font-weight: 900;
+            color: #ffe5b4;
         }
 
-        @keyframes gentleRise {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .meme-am {
+            background: linear-gradient(135deg, #2c2a3e, #1e1a30);
+            border-top: 2px solid #ffaa55;
+            font-size: 1.6rem;
+            font-style: italic;
         }
 
-        /* Задержки */
-        .glow-word:nth-child(1) { animation-delay: 0.05s; }
-        .glow-word:nth-child(2) { animation-delay: 0.1s; }
-        .glow-word:nth-child(3) { animation-delay: 0.15s; }
-        .glow-word:nth-child(4) { animation-delay: 0.2s; }
-        .glow-word:nth-child(5) { animation-delay: 0.25s; }
-        .glow-word:nth-child(6) { animation-delay: 0.3s; }
-        .glow-word:nth-child(7) { animation-delay: 0.35s; }
-        .glow-word:nth-child(8) { animation-delay: 0.4s; }
-
-        /* Декоративный акцент */
         .heart-note {
             text-align: center;
-            margin-top: 2.8rem;
+            margin-top: 2rem;
             font-size: 0.9rem;
             color: #ebb87b;
             display: flex;
@@ -208,69 +266,38 @@
             opacity: 0.8;
         }
 
-        .heart-note span {
-            font-size: 1.1rem;
-        }
-
-        /* Мобильная адаптация */
         @media (max-width: 580px) {
-            .compliment-world {
-                padding: 1.5rem 1.2rem;
-            }
-            .glow-word {
-                font-size: 1.2rem;
-                padding: 0.4rem 1rem;
-            }
-            .word-big {
-                font-size: 1.5rem;
-            }
-            .word-lovely {
-                font-size: 1.4rem;
-            }
-            .word-medium {
-                font-size: 1.2rem;
-            }
+            .compliment-world { padding: 1.5rem 1.2rem; }
+            .glow-word { font-size: 1.2rem; padding: 0.4rem 1rem; }
+            .word-big { font-size: 1.5rem; }
+            .mellstroy-button { font-size: 1.3rem; padding: 0.5rem 1.2rem; }
+            .meme-bubble { font-size: 1.2rem; padding: 0.4rem 1.2rem; }
+            .meme-omg { font-size: 1.4rem; }
+            .meme-am { font-size: 1.3rem; }
         }
 
-        /* Эффект "лунного" свечения для фона при наведении (необязательный бонус) */
-        .glow-word:hover ~ .romantic-bg,
-        .glow-word:hover {
-            transition: all 0.1s;
-        }
-        
-        /* Фокус для доступности */
-        .glow-word:focus-visible {
-            outline: 2px solid #ffbc6e;
-            outline-offset: 4px;
-            border-radius: 80px;
-        }
-        
-        /* Дополнительная магия: при наведении на любое слово, фон чуть подсвечивается */
-        body:has(.glow-word:hover) {
-            background: radial-gradient(ellipse at 50% 40%, #2f2045, #120c22);
-            transition: background 0.3s;
-        }
-        
-        /* крошечные звездочки в фоне (ручная генерация js) */
-        .star {
-            position: absolute;
-            background-color: #ffeaad;
+        .golden-sparkle, .food-rain {
+            position: fixed;
             border-radius: 50%;
-            opacity: 0.4;
             pointer-events: none;
-            z-index: 0;
+            will-change: transform, opacity;
+            z-index: 10001;
+            filter: blur(0.7px);
+        }
+        .food-rain {
+            background: transparent;
+            font-size: 1.6rem;
+            filter: drop-shadow(0 0 4px #ffaa44);
+            text-align: center;
         }
     </style>
 </head>
 <body>
-
-<!-- ФОН С ПАРЯЩИМИ ЧАСТИЦАМИ (романтичная атмосфера) -->
 <div class="romantic-bg" id="romanticBg"></div>
 
 <main class="compliment-world">
-    <!-- Комплимент - главное обращение, как просили: "Василиса, ты моё ... " -->
     <div class="compliment-title">
-        ✦ Василиса,ты мое солнце ✦
+        ✦ Василиса, ты моё солнце ✦
     </div>
     <div style="text-align: center;">
         <div class="soft-sub">
@@ -293,12 +320,18 @@
         <div class="glow-word">💖 страсть</div>
     </div>
 
-    <div class="heart-note">
-        <span>✧</span> тибе ✧ 
-        <span>✧</span>
+    <div class="mellstroy-section">
+        <button class="mellstroy-button" id="mellstroyBtn">
+            🎮 MELLSTROY 🎮
+        </button>
+        <div class="meme-messages" id="memeContainer"></div>
+        <div style="font-size: 0.7rem; color: #b89a6a; margin-top: 10px;">
+            💥 нажми на Меллстроя быстрее бем бем бем
+        </div>
     </div>
-    <div class="heart-note" style="margin-top: 12px; font-size: 0.75rem; opacity: 0.6;">
-        каждое твое качество достойно сияния, Василиско ✨
+
+    <div class="heart-note">
+        <span>✧</span> для моих чемпионов <span>✧</span>
     </div>
 </main>
 
@@ -320,6 +353,7 @@
             bgContainer.appendChild(star);
         }
     }
+    createStars();
 
     function createGoldenSparkle(x, y) {
         const sparkCount = 14;
@@ -381,7 +415,6 @@
                 clientY = rect.top + rect.height / 2;
             }
             createGoldenSparkle(clientX, clientY);
-
             word.style.transition = 'all 0.07s linear';
             word.style.textShadow = '0 0 18px #FFCC55, 0 0 30px #F7B32B';
             word.style.boxShadow = '0 0 28px 10px rgba(255, 200, 70, 0.9)';
@@ -392,7 +425,6 @@
                     word.style.transition = '';
                 }, 50);
             }, 130);
-            
         });
         
         word.addEventListener('mouseenter', () => {
@@ -406,8 +438,6 @@
             }
         });
     });
-    
-    createStars();
     
     function createFloatingHeart() {
         const heart = document.createElement('div');
@@ -424,8 +454,8 @@
         heart.style.animation = `floatUp ${Math.random() * 7 + 6}s linear forwards`;
         document.body.appendChild(heart);
         
-        const style = document.createElement('style');
         if (!document.querySelector('#dynamicHeartAnim')) {
+            const style = document.createElement('style');
             style.id = 'dynamicHeartAnim';
             style.innerHTML = `@keyframes floatUp { 0% { bottom: -30px; opacity: 0.2; transform: rotate(0deg); } 100% { bottom: 110%; opacity: 0; transform: rotate(15deg); } }`;
             document.head.appendChild(style);
@@ -434,50 +464,140 @@
             heart.remove();
         }, 9000);
     }
-
     setInterval(() => {
         if (Math.random() > 0.7) {
             createFloatingHeart();
         }
     }, 3800);
- 
-    console.log('✨ Тепло и свет для Василисы ✨ | Наведи на слова — почувствуй сияние');
     
-    if(window.innerWidth < 600) {
-        const starsDiv = document.getElementById('romanticBg');
-        if(starsDiv && starsDiv.children.length > 70) {
-            const extraStars = Array.from(starsDiv.children).slice(60);
-            extraStars.forEach(star => star.remove());
+    const mellstroyBtn = document.getElementById('mellstroyBtn');
+    const memeContainer = document.getElementById('memeContainer');
+    
+    function startFoodRain(baseText, centerX, centerY) {
+        const isOmg = baseText.includes("ОМАЙГАД") || baseText.includes("ОМАЙ");
+        const isAm = baseText.includes("АМ АМ") || baseText.includes("НОМ") || baseText.includes("АМ");
+        
+        for (let i = 0; i < 16; i++) {
+            let symbol = "";
+            if (isOmg) {
+                const variants = ["🍕", "🍔", "ОМАЙ!", "🤯", "🍟"];
+                symbol = variants[Math.floor(Math.random() * variants.length)];
+                if (symbol === "ОМАЙ!") symbol = "ОМАЙГАД!";
+            } else if (isAm) {
+                const variants = ["🍕", "🍔", "АМ!", "🍗", "🍖"];
+                symbol = variants[Math.floor(Math.random() * variants.length)];
+                if (symbol === "АМ!") symbol = "АМ АМ";
+            } else {
+                const mix = ["🍕", "ОМАЙ", "АМ АМ", "🍔"];
+                symbol = mix[Math.floor(Math.random() * mix.length)];
+            }
+            
+            const rainDrop = document.createElement('div');
+            rainDrop.className = 'food-rain';
+            rainDrop.textContent = symbol;
+            rainDrop.style.position = 'fixed';
+            rainDrop.style.left = (centerX + (Math.random() - 0.5) * 90) + 'px';
+            rainDrop.style.top = (centerY - 15 + (Math.random() - 0.5) * 30) + 'px';
+            rainDrop.style.fontSize = `${Math.random() * 18 + 16}px`;
+            rainDrop.style.opacity = '0.95';
+            rainDrop.style.zIndex = '10002';
+            document.body.appendChild(rainDrop);
+            
+            let dx = (Math.random() - 0.5) * 2.5;
+            let dy = Math.random() * 5 + 3;
+            let opacity = 0.95;
+            let rotation = Math.random() * 360;
+            let posX = parseFloat(rainDrop.style.left);
+            let posY = parseFloat(rainDrop.style.top);
+            
+            const animateRain = () => {
+                posX += dx;
+                posY += dy;
+                dy += 0.2;
+                opacity -= 0.018;
+                rotation += 8;
+                if (opacity <= 0.02 || posY > window.innerHeight + 150) {
+                    rainDrop.remove();
+                    return;
+                }
+                rainDrop.style.left = posX + 'px';
+                rainDrop.style.top = posY + 'px';
+                rainDrop.style.opacity = opacity;
+                rainDrop.style.transform = `rotate(${rotation}deg) scale(${0.8 + Math.sin(Date.now() * 0.01) * 0.2})`;
+                requestAnimationFrame(animateRain);
+            };
+            requestAnimationFrame(animateRain);
+            setTimeout(() => {
+                if(rainDrop && rainDrop.remove) rainDrop.remove();
+            }, 2500);
+        }
+        for (let i = 0; i < 10; i++) {
+            createGoldenSparkle(centerX + (Math.random() - 0.5) * 60, centerY + (Math.random() - 0.5) * 50);
         }
     }
+    
+    function getRandomMemePhrase() {
+        const phrases = [
+            { text: "ОМАЙГАД!", class: "meme-omg" },
+            { text: "АМ АМ АМ", class: "meme-am" },
+            { text: "ОМАЙГАД!!", class: "meme-omg" },
+            { text: "АМ АМ АМ 🍕", class: "meme-am" },
+            { text: "НОМ НОМ НОМ", class: "meme-am" },
+            { text: "ОМАЙГАД, ВАСИЛИСА!", class: "meme-omg" },
+            { text: "АМ АМ АМ 🍔", class: "meme-am" },
+            { text: "ОМАЙГАД ✨", class: "meme-omg" }
+        ];
+        return phrases[Math.floor(Math.random() * phrases.length)];
+    }
+    
+    function addMemeBubble() {
+        const currentBubbles = document.querySelectorAll('.meme-bubble');
+        if (currentBubbles.length >= 5) {
+            if (currentBubbles[0]) currentBubbles[0].remove();
+        }
+        const phraseObj = getRandomMemePhrase();
+        const bubble = document.createElement('div');
+        bubble.className = `meme-bubble ${phraseObj.class}`;
+        bubble.textContent = phraseObj.text;
+        if (phraseObj.text.includes("АМ") && !phraseObj.text.includes("🍕") && Math.random() > 0.5) {
+            bubble.textContent += " 🍕";
+        }
+        if (phraseObj.text.includes("ОМАЙ") && !phraseObj.text.includes("✨") && Math.random() > 0.6) {
+            bubble.textContent += " 🤯";
+        }
+        memeContainer.appendChild(bubble);
+        
+        bubble.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const rect = bubble.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            startFoodRain(bubble.textContent, centerX, centerY);
+            bubble.style.transform = 'scale(0)';
+            bubble.style.transition = '0.1s';
+            setTimeout(() => {
+                if(bubble && bubble.remove) bubble.remove();
+            }, 100);
+            for (let i=0;i<15;i++) createGoldenSparkle(centerX + (Math.random()-0.5)*40, centerY + (Math.random()-0.5)*40);
+        });
+    }
+    
+    mellstroyBtn.addEventListener('click', (e) => {
+        let addCount = Math.floor(Math.random() * 2) + 1;
+        for (let i = 0; i < addCount; i++) {
+            addMemeBubble();
+        }
+        const rectBtn = mellstroyBtn.getBoundingClientRect();
+        const btnX = rectBtn.left + rectBtn.width/2;
+        const btnY = rectBtn.top + rectBtn.height/2;
+        createGoldenSparkle(btnX, btnY);
+        mellstroyBtn.style.transform = 'scale(0.96)';
+        setTimeout(() => { mellstroyBtn.style.transform = ''; }, 120);
+        mellstroyBtn.style.textShadow = '0 0 12px #ffcc55';
+        setTimeout(() => { mellstroyBtn.style.textShadow = ''; }, 200);
+    });
+    
+    console.log('✨ s ✨');
 </script>
-
-<style>
-    .golden-sparkle {
-        position: fixed;
-        border-radius: 50%;
-        pointer-events: none;
-        will-change: transform, opacity, left, top;
-        background: radial-gradient(circle, #FFE484, #FFB347);
-        z-index: 10001;
-        filter: blur(0.7px);
-    }
-    
-    .compliment-world {
-        transition: box-shadow 0.2s, background 0.2s;
-    }
-    .glow-word:hover {
-        transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.2);
-    }
-    
-    ::-webkit-scrollbar {
-        width: 5px;
-        background: #2d1f36;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #D4AF37;
-        border-radius: 10px;
-    }
-</style>
 </body>
 </html>
